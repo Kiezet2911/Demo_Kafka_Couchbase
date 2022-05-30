@@ -2,6 +2,8 @@ package com.demoKafkaAndCouchbase.KafkaCouchbase.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
 import com.demoKafkaAndCouchbase.KafkaCouchbase.Entity.Sinhvien;
@@ -11,7 +13,6 @@ import com.demoKafkaAndCouchbase.KafkaCouchbase.service.SinhvienService;
 @Service
 public class SinhvienImpl implements SinhvienService {
 	private final SinhvienRepository sinhvienRepository;
-
 
 	public SinhvienImpl(SinhvienRepository sinhvienRepository) {
 		this.sinhvienRepository = sinhvienRepository;
@@ -24,15 +25,20 @@ public class SinhvienImpl implements SinhvienService {
 
 	@Override
 	public Optional<Sinhvien> findById(String id) {
-		Optional<Sinhvien> sv = sinhvienRepository.findById(id);		
+		Optional<Sinhvien> sv = sinhvienRepository.findById(id);
 		return sv;
 	}
 
 	@Override
 	public Sinhvien insert(Sinhvien sinhvien) {
-		System.out.println(sinhvien);
-		Sinhvien sv = sinhvienRepository.save(sinhvien);
-		return sv;
+
+		Sinhvien sv = new Sinhvien();
+
+		sv.setId(UUID.randomUUID().toString());
+		sv.setName(sinhvien.getName());
+		sv.setLop(sinhvien.getLop());
+
+		return sinhvienRepository.save(sv);
 	}
 
 	@Override

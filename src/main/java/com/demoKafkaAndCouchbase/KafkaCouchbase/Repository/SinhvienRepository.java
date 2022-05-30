@@ -11,9 +11,9 @@ import com.couchbase.client.java.query.QueryScanConsistency;
 import com.demoKafkaAndCouchbase.KafkaCouchbase.Entity.Sinhvien;
 
 @Repository()
-@Scope("_default")
-@Collection("_default")
+@Scope("Sinhvien")
+@Collection("demo")
 @ScanConsistency(query = QueryScanConsistency.REQUEST_PLUS)
 public interface SinhvienRepository extends CouchbaseRepository<Sinhvien, String>, DynamicProxyable<SinhvienRepository> {
-
+	
 }

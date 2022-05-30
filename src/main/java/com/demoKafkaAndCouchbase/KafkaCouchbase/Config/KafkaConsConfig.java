@@ -27,7 +27,7 @@ public class KafkaConsConfig {
 		Map<String, Object> cons = new HashMap<>();
 		cons.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 		cons.put(ConsumerConfig.GROUP_ID_CONFIG, "group-id");
-		cons.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		cons.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);		
 		cons.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);		
 		cons.put(JsonDeserializer.VALUE_DEFAULT_TYPE, JsonMessenger.class);
 		return cons;

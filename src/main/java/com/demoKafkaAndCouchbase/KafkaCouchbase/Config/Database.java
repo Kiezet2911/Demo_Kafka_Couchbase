@@ -10,7 +10,8 @@ import org.springframework.data.couchbase.repository.config.EnableReactiveCouchb
 @EnableCouchbaseRepositories
 @EnableReactiveCouchbaseRepositories
 public class Database extends AbstractCouchbaseConfiguration {
-
+	
+	//lay value tu application.properties
 	@Value("${storage.host}")
 	private String host;
 

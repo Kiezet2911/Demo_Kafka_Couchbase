@@ -3,6 +3,7 @@ package com.demoKafkaAndCouchbase.KafkaCouchbase.Controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +20,8 @@ import com.demoKafkaAndCouchbase.KafkaCouchbase.service.SinhvienService;
 @RequestMapping("/sv")
 public class SinhvienController {
 
+	@Autowired
 	private SinhvienService sinhvienService;
-
-	public SinhvienController(SinhvienService sinhvienService) {
-		this.sinhvienService = sinhvienService;
-	}
 
 	@GetMapping
 	public List<Sinhvien> findAll() {
@@ -31,12 +29,12 @@ public class SinhvienController {
 	}
 
 	@GetMapping("/{id}")
-	public Optional<Sinhvien> findOneById(@PathVariable("id") String id) {		
+	public Optional<Sinhvien> findOneById(@PathVariable("id") String id) {
 		return sinhvienService.findById(id);
 	}
 
 	@PostMapping
-	public Sinhvien Insert(@RequestBody Sinhvien sinhvien) {		
+	public Sinhvien Insert(@RequestBody Sinhvien sinhvien) {
 		return sinhvienService.insert(sinhvien);
 	}
 
