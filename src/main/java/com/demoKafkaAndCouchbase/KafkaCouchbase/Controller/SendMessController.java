@@ -27,19 +27,19 @@ public class SendMessController {
 	}
 
 	@GetMapping("/{mess}")
-	public String Send(@PathVariable("mess") String mess) {
-		service.send(TOPIC_NAME, template, mess);
-		return "Mess: " + mess;
+	public JsonMessenger Send(@PathVariable("mess") String mess) {
+
+		return service.send(TOPIC_NAME, template, mess);
 	}
 
-	@GetMapping("/readsend")
-	@KafkaListener(topics = "items-topic", groupId = "group-id")
-	public void listen(String message) {
-		System.out.println("Message: " + message);
+	// @GetMapping("/readsend")
+	@KafkaListener(topics = "items-topic", groupId = "group-id", containerFactory = "kafkaListenerContainerFactory")
+	public void listen(JsonMessenger message) {
+		System.out.println("Message: " + message.getMess());
 	}
-	
+
 	@GetMapping("/findAll")
-	public List<JsonMessenger> findAll(){
+	public List<JsonMessenger> findAll() {
 		return service.findAll();
 	}
 }
