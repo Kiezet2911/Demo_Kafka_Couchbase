@@ -14,6 +14,6 @@ import com.demoKafkaAndCouchbase.KafkaCouchbase.Entity.JsonMessenger;
 @Collection("demo")
 @ScanConsistency(query = QueryScanConsistency.REQUEST_PLUS)
 public interface SendMessRepository
-		extends CouchbaseRepository<JsonMessenger, String>, DynamicProxyable<SendMessRepository> {
+		extends CouchbaseRepository<JsonMessenger, String>{
 
 }
